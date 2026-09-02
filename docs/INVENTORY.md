@@ -1,6 +1,6 @@
 # Inventory of black-oxide's measurement harness
 
-Measured 2026-09-02 against `~/workspace/oxide` at `521f602f` (branch `v04-wave9-index-syntax`). Every number below was produced by the commands at the end of this file; re-run them rather than trusting the table.
+Measured 2026-09-02 against `~/workspace/oxide` (<https://github.com/bricelancasterwcp-sudo/black-oxide>) at `521f602f` (branch `v04-wave9-index-syntax`). Every number below was produced by the commands at the end of this file; re-run them rather than trusting the table.
 
 ## eval/*.py
 

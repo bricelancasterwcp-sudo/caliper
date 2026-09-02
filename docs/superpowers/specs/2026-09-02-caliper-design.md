@@ -3,7 +3,8 @@
 **Status:** brief only, awaiting owner approval. No code has been
 extracted. Working name is a placeholder (see open rulings).
 **Date:** 2026-09-02. **Source of every number:** `docs/INVENTORY.md`
-and the black-oxide files it cites, at `~/workspace/oxide` @ `521f602f`.
+and the black-oxide files it cites, at `~/workspace/oxide` @ `521f602f`
+(<https://github.com/bricelancasterwcp-sudo/black-oxide>).
 
 ## 1. What the bench is
 
@@ -74,7 +75,7 @@ The parts, each with the oxide file that holds it today:
 Any question of the form *how do models use notation X against
 notation Y* where both can be oracle-checked:
 
-1. **flux** (`~/workspace/flux`, scaffolded in parallel) — consumer
+1. **flux** (<https://github.com/bricelancasterwcp-sudo/flux>, `~/workspace/flux` locally, scaffolded in parallel) — consumer
    #1. Rust with rustc's machine-applicable suggestions auto-applied
    before the model sees the residual, against plain Rust. Same oracle
    (rustc + expected_stdout), same paired estimands, same guards.
