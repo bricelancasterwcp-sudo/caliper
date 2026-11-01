@@ -53,7 +53,7 @@ Oxide compiler or its defect taxonomy, and they stay.
 `harness.py` is the single seam that matters: it is where an arm turns
 a candidate source into an oracle verdict (`src.codegen.rust.transpile`
 for oxide, `src.explicit.pipeline.run` for explicit, `rustc` directly
-for rust — `eval/harness.py:141-144`). Everything above that line is
+for rust; `eval/harness.py:141-144`). Everything above that line is
 prompt rendering and everything below is the rustc oracle, and both are
 already arm-agnostic in shape.
 
@@ -84,7 +84,7 @@ already arm-agnostic in shape.
 
 ## Test suite
 
-`1738/1741 tests collected (3 deselected) in 0.15s` — 47 test files, 17625 lines.
+`1738/1741 tests collected (3 deselected) in 0.15s`: 47 test files, 17625 lines.
 
 ## Commands
 

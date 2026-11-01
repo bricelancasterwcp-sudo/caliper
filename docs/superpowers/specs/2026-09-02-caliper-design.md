@@ -1,4 +1,4 @@
-# caliper — design brief
+# caliper: design brief
 
 **Status:** brief only, awaiting owner approval. No code has been
 extracted. Working name is a placeholder (see open rulings).
@@ -24,7 +24,7 @@ The parts, each with the oxide file that holds it today:
   not reproduce its stdout byte-exactly is not a reference
   (`eval/train_corpus.py:157 validate_pair`).
 - **A symmetric control arm.** Whatever is done to arm A is done to
-  arm B — same corpus construction, same fine-tune recipe, same seeds
+  arm B: same corpus construction, same fine-tune recipe, same seeds
   (`scripts/runpod/train_lora.py`: "one recipe for all six runs"). The
   control is what let wave 8 call a 15× compile-rate gap a language
   property rather than a distribution-shift artifact
@@ -45,7 +45,7 @@ The parts, each with the oxide file that holds it today:
   rejected on, counted over its own failing replies
   (`eval/demand_census.py`). Cost: where the reference pairs' token
   surplus sits, per construct (`eval/cost_census.py`). Neither eye
-  suffices alone — wave 3 shipped constructs on cost evidence that
+  suffices alone. Wave 3 shipped constructs on cost evidence that
   drew zero uptake, and wave 2 deferred index-assign on demand
   evidence while it was the corpus's largest cost gap.
 - **Drift guards that reproduce to the digit.** The untuned Rust
@@ -57,7 +57,7 @@ The parts, each with the oxide file that holds it today:
   committed cells restricted to those seeds, never to the ten-seed
   published figure (`eval/wave8_screen.py:21 GUARD_ANCHORS`; the
   published 0.745 reads 0.800 on seeds 1–3).
-- **Contamination in both directions** — held-out tasks against
+- **Contamination in both directions**: held-out tasks against
   training programs and against committed eval solutions
   (`eval/train_corpus.py:73 contamination_report`; the second
   direction was run by hand in wave 8 and is item 6 of that report's
@@ -75,12 +75,12 @@ The parts, each with the oxide file that holds it today:
 Any question of the form *how do models use notation X against
 notation Y* where both can be oracle-checked:
 
-1. **flux** (<https://github.com/bricelancasterwcp-sudo/flux>, `~/workspace/flux` locally, scaffolded in parallel) — consumer
+1. **flux** (<https://github.com/bricelancasterwcp-sudo/flux>, `~/workspace/flux` locally, scaffolded in parallel): consumer
    #1. Rust with rustc's machine-applicable suggestions auto-applied
    before the model sees the residual, against plain Rust. Same oracle
    (rustc + expected_stdout), same paired estimands, same guards.
 2. **sensorium's LLM-native query CLI**, or any tool-call / extraction
-   schema — consumer #2, later. The oracle becomes a schema validator
+   schema: consumer #2, later. The oracle becomes a schema validator
    or a replayed command; the arms are two spellings of the surface.
 3. **black-oxide itself**, once it consumes caliper instead of
    carrying the bench.
@@ -94,11 +94,11 @@ discipline runs on.
 
 Two interfaces, both already present in shape at `eval/harness.py`:
 
-- **Oracle** — `check(source) -> Verdict{compiled, stdout, diagnostics}`.
+- **Oracle**: `check(source) -> Verdict{compiled, stdout, diagnostics}`.
   rustc today (`eval/rustc_adapter.py`, 180 lines, generic). A
   JSON-schema validator, a test runner, or a replayed CLI are other
   implementations. The bench never knows which.
-- **Arm** — a triple: `render_prompt(task, shots, card) -> str`,
+- **Arm** is a triple: `render_prompt(task, shots, card) -> str`,
   `parse_reply(text) -> source` (today `eval/extract.py`),
   `to_oracle_input(source) -> (oracle_source, diagnostics)`. For the
   oxide arm the third step is `src.codegen.rust.transpile`
@@ -115,7 +115,7 @@ black-oxide, which then pins caliper the way bloomery pins assay
 
 Measured shape of the job: 1,073 generic lines, 6,047 mixed, 1,044
 bound, over 26 modules; plus 89 generic / 192 mixed script lines
-(`docs/INVENTORY.md`, totals). The mixed share is 74% — this is a
+(`docs/INVENTORY.md`, totals). The mixed share is 74%. This is a
 constant-lifting job, not a rewrite.
 
 ## 4. Invariants that must survive
@@ -148,7 +148,7 @@ passes through caliper's code against black-oxide's committed data.
 
 Black Oxide requires 3.14 (`README.md:356`) and is stdlib-only. The
 PEP 695 `type` statements are in `src/parser/ast.py` and
-`src/sema/cfg.py` — **none in `eval/`**; the eval path needs ≥3.12 on
+`src/sema/cfg.py` (**none in `eval/`**); the eval path needs ≥3.12 on
 the pod only because `harness` imports `src`. An extracted caliper
 therefore has no measured 3.14 dependency. Recommendation: **stdlib
 only, floor 3.12** (what the RunPod path already runs the harness
@@ -177,12 +177,12 @@ estimands importable by flux without dragging the Oxide compiler.
 ## 7. Not in scope
 
 - The Oxide language (`src/`), its cards, grammars, shots, and
-  probes — arm assets, they stay.
+  probes. Arm assets, they stay.
 - The ownership probe's defect corpus and taxonomy (`eval/probe.py`,
   `eval/degenerate.py`, `eval/deformation.py`, `eval/demand.py`).
 - Wave runbooks (`wave8_phaseb.sh`, `wave8_14b_screen.sh`,
-  `wave9_rescreen.sh`) — they belong to their plans.
-- `train_lora.py` — generic in recipe but reads oxide's train tasks
+  `wave9_rescreen.sh`). They belong to their plans.
+- `train_lora.py` is generic in recipe but reads oxide's train tasks
   and renders through `harness.build_prompt`; revisit in phase 6 if a
   second consumer needs fine-tuned arms.
 - Any new estimand. caliper ships what black-oxide measured with, not
