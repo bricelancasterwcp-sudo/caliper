@@ -1,6 +1,6 @@
 # caliper
 
-**A paired-arm measurement bench for notation design — how do models
+**A paired-arm measurement bench for notation design: how do models
 use notation X against notation Y, on identical tasks, under one
 oracle.**
 
@@ -23,14 +23,14 @@ something it can check.
 **Inventory and design brief only. Awaiting owner approval. No code has
 been extracted.**
 
-- [`docs/INVENTORY.md`](docs/INVENTORY.md) — every module of
+- [`docs/INVENTORY.md`](docs/INVENTORY.md): every module of
   black-oxide's `eval/` and `scripts/runpod/`, measured by command:
   lines, imports, test coverage, and whether it is generic, generic
   with Oxide constants baked in, or bound to the Oxide compiler.
   Result: 1,073 generic lines, 6,047 mixed, 1,044 bound. A
   constant-lifting job, not a rewrite.
-- [`docs/superpowers/specs/2026-09-02-caliper-design.md`](docs/superpowers/specs/2026-09-02-caliper-design.md)
-  — what the bench is, what it is for, the two interfaces, the
+- [`docs/superpowers/specs/2026-09-02-caliper-design.md`](docs/superpowers/specs/2026-09-02-caliper-design.md):
+  what the bench is, what it is for, the two interfaces, the
   invariants that must survive extraction (every published black-oxide
   ratio reproducing byte-exactly through caliper's code is the
   acceptance test), the phase order with a falsification test per
@@ -46,4 +46,4 @@ Sibling discipline: the measurement method is a skill
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).

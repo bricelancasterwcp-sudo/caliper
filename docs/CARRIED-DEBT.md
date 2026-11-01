@@ -4,7 +4,7 @@ Appended at every merge: *what this slice settled* → *deferred, with
 rulings* → *process lessons*. Resolved items are struck through, never
 deleted.
 
-## 2026-09-02 — inventory + design brief (no code)
+## 2026-09-02: inventory + design brief (no code)
 
 ### Settled
 
@@ -16,7 +16,7 @@ deleted.
 ### Deferred, awaiting rulings
 
 - Name, python floor, flux-pins-oxide-directly, library-vs-template,
-  phase 8 — see the brief §8.
+  phase 8 (see the brief §8).
 
 ### Process lessons
 
